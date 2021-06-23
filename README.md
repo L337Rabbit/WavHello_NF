@@ -1,5 +1,5 @@
 # WavHello
-C#/.NET wav file processing library and player.
+C#/.NET wav file processing library and player. (.NET Framework version)
 
 ```csharp
 using com.okitoki.wavhello;
