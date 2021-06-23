@@ -62,10 +62,5 @@ namespace com.okitoki.wavhello
         {
             throw new NotImplementedException("Instrument chunks have not been implemented.");
         }
-
-        private void ReadUnknownChunk(FileStream fs, int chunkSize)
-        {
-            BinaryFileUtils.Read(fs, chunkSize);
-        }
     }
 }
