@@ -15,17 +15,16 @@ namespace com.okitoki.wavhello.chunks
             DataChunk chunk = new DataChunk();
             chunk.ChunkID = chunkID;
             chunk.ChunkSize = chunkSize;
+            int readSize = chunkSize;
 
             if(chunk.ChunkSize % 2 == 1)
             {
                 //We need to add an extra byte for padding
                 chunk.IsPadded = true;
-                chunk.Data = new byte[chunk.ChunkSize + 1];
+                readSize++;
             }
-            else
-            {
-                chunk.Data = new byte[chunk.ChunkSize];
-            }
+            
+            chunk.Data = new byte[readSize];
 
             //Read data into the chunk.
             BinaryFileUtils.Read(fs, chunk.ChunkSize).CopyTo(chunk.Data, 0);

@@ -17,7 +17,14 @@ namespace com.okitoki.wavhello.chunks
             UnknownChunk chunk = new UnknownChunk();
             chunk.ChunkID = chunkID;
             chunk.ChunkSize = chunkSize;
-            chunk.ChunkData = BinaryFileUtils.Read(fs, chunkSize);
+            int readSize = chunkSize;
+            if (chunkSize % 2 == 1)
+            {
+                chunk.IsPadded = true;
+                readSize++;
+            }
+
+            chunk.ChunkData = BinaryFileUtils.Read(fs, readSize);
             return chunk;
         }
 
